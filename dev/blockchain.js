@@ -1,9 +1,16 @@
 const sha256 = require("sha256");
+const currentNodeUrl = process.argv[3];
 
 // Blockchain cONSTRACTOR
 function Blockchain() {
   this.chain = [];
   this.pendingTransactions = [];
+
+  // Current Node Url
+  this.currentNodeUrl = currentNodeUrl;
+
+  // Others Nodes Urls
+  this.networkNodes = [];
 
   //Creating A Genesis Block : First Block
   this.createNewBlock(100, "0", "0");
