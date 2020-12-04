@@ -1,4 +1,5 @@
 const sha256 = require("sha256");
+const { v1: uuidv1 } = require("uuid");
 const currentNodeUrl = process.argv[3];
 
 // Blockchain cONSTRACTOR
@@ -52,18 +53,25 @@ Blockchain.prototype.createNewTransaction = function (
     amount: amount,
     sender: sender,
     recipient: recipient,
+    transactionId: uuidv1().split("-").join(""),
   };
-  this.pendingTransactions.push(newTransaction);
+  return newTransaction;
+};
 
+// add the new transaction to the pending transactions
+Blockchain.prototype.addTransactionToPendingTransactions = function (
+  transactionObj
+) {
+  this.pendingTransactions.push(transactionObj);
   return this.getLastBlock()["index"] + 1;
 };
 
 // Hashing the Block
-Blockchain.prototype.hashBlock = function (
+Blockchain.prototype.hashBlock = (
   previousBlockHash,
   currentBlockData,
   nonce
-) {
+) => {
   const dataAsString =
     previousBlockHash + nonce.toString() + JSON.stringify(currentBlockData);
   const hash = sha256(dataAsString);
