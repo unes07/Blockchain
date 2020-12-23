@@ -4,8 +4,12 @@ const Blockchain = require("./blockchain");
 const { v1: uuidv1 } = require("uuid");
 const rp = require("request-promise");
 const { post } = require("request-promise");
+const path = require("path");
 const PORT = process.argv[2];
 const app = express();
+
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "ejs");
 
 // Creating a unique id of the fake miner
 const nodeAddress = uuidv1().split("-").join("");
@@ -266,6 +270,39 @@ app.get("/consensus", (req, res) => {
     .catch((err) => {
       console.log(err);
     });
+});
+
+// Get a block by block hash
+app.get("/block/:blockHash", (req, res) => {
+  const blockHash = req.params.blockHash;
+  const correctBlock = bitcoin.getBlock(blockHash);
+  res.json({
+    block: correctBlock,
+  });
+});
+
+// Get a transaction by transaction id
+app.get("/transaction/:transactionId", (req, res) => {
+  const transactionId = req.params.transactionId;
+  const transactionData = bitcoin.getTransaction(transactionId);
+  res.json({
+    transaction: transactionData.transaction,
+    block: transactionData.block,
+  });
+});
+
+// Get a wallet history & the balance
+app.get("/address/:addressId", (req, res) => {
+  const address = req.params.addressId;
+  const addressData = bitcoin.getAddressData(address);
+  res.json({
+    addressData: addressData,
+  });
+});
+
+// Get block explorer
+app.get("/block-explorer", (req, res) => {
+  res.sendFile("./block-explorer/index.html", { root: __dirname });
 });
 
 // Server listening
