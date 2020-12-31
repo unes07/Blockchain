@@ -13,6 +13,7 @@ $ npm install
 
 ## Setup Nodes
 If you take a look at the package.json file you will find the node configurations at the **scripts**. There's 5 nodes you can add other ones or delete some.
+
 ![package.json Scripts](/images/package.jsonScripts.png)
 
 To run a node, run the command below at the terminal. At each terminal run a node. for the five nodes
@@ -22,6 +23,7 @@ $ npm run node_x
 ```
 
 You can visit at your browser for seeing node 1 [http://localhost:3001/blockchain](http://localhost:3001/blockchain), and change the *1* by the numbers of the nodes [2:5].
+
 ![blockchain api](/images/image1.jpg)
 
 ## Network
@@ -44,6 +46,7 @@ To create the network:
 ![request](/images/image2.jpg)
   
 -By making this request the second node and the first one are now connected you can check your browser to verfiy the Node Url of the seconde node is added at the *networkNodes* array of the first node.
+
 ![blockchain node 1](/images/image3.jpg)
 
 Now you can added the other nodes to the network by yourself, following the same steps changing just the body of the request: change the Node Url (number).
@@ -51,6 +54,7 @@ Now you can added the other nodes to the network by yourself, following the same
 -**Note:** we make a request to the first node but you can make it to any of the running nodes.
 
 Now you network is ready we can start making some transactions.
+
 ![blockchain node 1 network](/images/image4.jpg)
 
 ## Transactions
@@ -81,6 +85,7 @@ To make a transaction:
 -You can make as many transactions as you want.
 
 The transaction is in **pendingTransactions**, to add this block of transactions to the chain it should be mined.
+
 ![blockchain node 1](/images/image6.jpg)
 
 ## Mining
@@ -90,6 +95,7 @@ To mine a block you should make a request to **/mine** to any of the running nod
 ![Mining the block](/images/image7.jpg)
 
 If you check now the blockchain API page http://localhost:3001/mine you will notice another transaction of the amount of 12 is being added to the **pendingTransactions** sent by "00" to a random Id. This is the reward of the miner sent by the blockchain to the miner wallet (public key).
+
 ![blockchain node 1](/images/image8.jpg)
 
 ## Consensus
@@ -106,6 +112,7 @@ you can search by:
  * an Address¹
 Address¹: is the wallet Id of a sender or a recipient
 You can find your data at your API, the enter it at the first input, then choose from the dropdown the type of the search. An example of a searsh by **Block Hash**
+
 ![Block Explorer](/images/image10.jpg)
 
 
