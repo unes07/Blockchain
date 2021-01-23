@@ -1,5 +1,9 @@
 # Blockchain
-A basic blockchain.
+As part of the Financial Engineering capstone project, I built a basic blockchain and illustrate its impact on the financial sector. I tried to clone the basic technology behind Bitcoin: the nodes network, Byzantine Fault Tolerance (BFT), Consensus.
+
+Technology is playing a major role in advancing the financial sector. Rather than a black box, blockchain and other technologies must be understood in order to recognize how it works and how it affects our Decision-Making process.
+
+You can find the project report in french: [Blockchain the new era of Finance](https://drive.google.com/file/d/1slgewgIG6wg11t-Z5ido-PAhqN4tyd0h/view?usp=sharing)
 
 # Installation & Prerequisites
 Make sure you have [Node.js](https://nodejs.org/) & [Postman](https://www.postman.com/downloads/) installed in your computer to follow the guide.
